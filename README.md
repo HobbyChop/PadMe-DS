@@ -5,10 +5,6 @@
 Not all features listed here are available in the demo. 
 For play on real hardware.
 
-<p align="center">
-  <img src="logo.png" width="460" alt="PadMe-DS">
-</p>
-
 # PadMe-DS
 
 A touchscreen FM chord-pad and groove instrument for the Nintendo DS. Tap the
