@@ -140,7 +140,7 @@ The free demo is a limited build. Compared with the full version, the demo:
 
 - Is locked to a single chord bank (no bank switching).
 - Is locked to a single bass pattern.
-- Sends no MIDI, no CC, and no clock.
+- Sends and recieves no MIDI, no CC, and no clock.
 - Has no presets and no save-state (no recall, no auto-restore).
 
 Everything else, the full FM engine, the XY morph pads, the splatter and bass
