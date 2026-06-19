@@ -179,49 +179,6 @@ hear changes. Entries are grouped (a dim header marks each section).
   including a base octave. Cycle root key, transpose +/-24 semitones. RAND
   deviates a couple of voices by an octave (tuned in settings).
 
-### mDS MIDI cart (`midi.c`)
-
-- DS-side driver for the mDS slot-2 cart (`"STDS"` v2 protocol). Probes for the
-  cart, sends MIDI **out** (each byte as two slot-2 trigger reads), and reads the
-  cart's **clock mirror** -- BPM/transport for display and the 24-PPQ tick for
-  the auto clock-lock. Ported from the `synth-cart` repo's `synth_cart.c`; keep the
-  offsets aligned with `rp2040/src/sync_state.h`.
-
-## Project structure
-
-- `ds-rom/Makefile` -- DS build (devkitARM + libnds + calico)
-- `ds-rom/source/main.c` -- entry point, input, settings menu, splatter/bass/metronome, MIDI out
-- `ds-rom/source/audio.c` / `.h` -- FM voices, ADSR, per-source feedback, glide, modulation, splatter, sub-bass
-- `ds-rom/source/chords.c` / `.h` -- chord banks, key/transpose, MIDI notes
-- `ds-rom/source/layout.c` / `.h` -- bottom-screen geometry + hit-testing
-- `ds-rom/source/gfx.c` / `.h` -- BG3 tile-canvas drawing primitives
-- `ds-rom/source/ui.c` / `.h` -- both screens, font-glyph labels, ADSR / faders / func row, metronome
-- `ds-rom/source/midi.c` / `.h` -- mDS slot-2 MIDI-out + clock driver
-- `ds-rom/source/preset.c` / `.h` -- preset / save-state bank, SD file I/O (libfat)
-- `ds-rom/source/version.h` -- project version
-
-## Build stack
-
-Build from the **devkitPro MSYS2 shell** (it sets `DEVKITARM` and the `/opt`
-mount); `ds_rules` links calico automatically, so `gbacart` needs no Makefile
-changes:
-
-```bash
-cd ds-rom
-make
-```
-
-The result is `ds-rom/padme_ds.nds`. From a plain Git-Bash shell the
-MSYS2-mounted `DEVKITARM` isn't visible -- pass it on the command line:
-`make DEVKITARM=/c/devkitPro/devkitARM`. The ROM runs in **melonDS**
-(`melonDS padme_ds.nds`) for visual checks; audio (FM, splatter, glide, MIDI)
-needs on-hardware or audio-capable testing.
-
-**Demo build:** `make DEMO=1` produces `padme_ds_demo.nds` (its own `build_demo/`
-object dir, so the full build is untouched). The demo locks to one chord bank and
-one bass pattern, disables MIDI and the preset / save-state screen, marks the
-version `0.5.0d`, and uses the "DEMO" icon and splash. It's gated by `-DDEMO`.
-
 ## What is still TODO
 
 - A full 4-/6-operator FM engine (currently 2-op with feedback).
