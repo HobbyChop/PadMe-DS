@@ -12,7 +12,7 @@ on-screen pads to play lush two-operator FM chords, drag the XY pads to morph th
 sound in real time, and let the built-in bass and sparkle generators fill out an
 evolving, atmospheric track. It also works as a deep MIDI and CC controller.
 
-Runs on real DS hardware from a flashcart, and in DS emulators. MIDI features use
+Runs on real DS hardware from a flashcart. MIDI features use
 the **mDS slot-2 MIDI cart**.
 
 > A free **demo** version is available. Features that the demo leaves out are
