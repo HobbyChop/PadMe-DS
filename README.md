@@ -2,6 +2,8 @@
 
 ## Overview
 
+Not all features listed here are available in the demo. 
+
 PadMe-DS is a Nintendo DS touchscreen FM chord-pad instrument: a central
 Kaoss-style X/Y morph pad with a live, touch-editable ADSR envelope beneath it,
 ringed by chord trigger pads and a function row. It plays a layered 2-operator
