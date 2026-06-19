@@ -55,16 +55,35 @@ the **mDS slot-2 MIDI cart**.
 - 32 preset slots plus an automatic last-state, saved to the SD card. Your setup
   survives a power-off and full patches recall instantly.
 
-### MIDI and CC out  *(full version only)*
-- Chords, splatter, and bass each send notes on their own **assignable MIDI
-  channel**, and any of the three can be switched **off** so you send only what
-  you want.
-- **Every parameter is also a MIDI CC.** Move any fader, XY pad, envelope handle,
-  toggle, or settings value and it streams out as a Continuous Controller, so your
-  whole performance can be recorded and automated in a DAW.
+### MIDI in & out  *(full version only)*
+- **Out:** chords, splatter, and bass each send notes on their own **assignable MIDI
+  channel**, and any of the three can be switched **off** so you send only what you
+  want.
+- **In:** set a MIDI **IN** channel and a DAW or keyboard can drive PadMe back —
+  incoming notes trigger the chord pads (see the map below) and incoming CC moves the
+  matching parameter. Point IN at a different channel than the OUT channels to avoid
+  feedback loops.
+- **Every parameter is a MIDI CC, both ways.** Move any fader, XY pad, envelope
+  handle, toggle, or settings value and it streams out as a Continuous Controller;
+  the same CC coming in drives that control — so a whole performance records and
+  plays back in a DAW. (A **CC OUT** toggle silences outgoing CC if you only want
+  notes/clock.)
 - **Two-way clock sync.** Slave PadMe-DS to your DAW or hardware clock, or turn on
   Sync Out to pass an incoming clock through to downstream gear, or to generate
   your own clock and be the master.
+
+**Chord pads over MIDI** — incoming notes on the MIDI IN channel map to the 8 pads:
+
+| Note | Pad | | Note | Pad |
+|------|----:|---|------|----:|
+| C3 (48)  | 1 | | E3 (52)  | 5 |
+| C#3 (49) | 2 | | F3 (53)  | 6 |
+| D3 (50)  | 3 | | F#3 (54) | 7 |
+| D#3 (51) | 4 | | G3 (55)  | 8 |
+
+Note *numbers* 48–55 are exact; the note *names* assume middle C = C4, so your DAW may
+label the octave differently — go by the numbers. A pad plays whatever chord it holds
+in the current bank and key, and note-off releases it unless HOLD is latched.
 
 ---
 
