@@ -4,6 +4,7 @@
 
 Not all features listed here are available in the demo. 
 For play on real hardware.
+Tested on R4i SDHC 1.4 with Twilight Menu.
 
 # PadMe-DS
 
