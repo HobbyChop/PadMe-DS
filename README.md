@@ -1,5 +1,7 @@
 # PadMe-DS Project Documentation
 
+<td align="center"><img src="PadMe-DS.png" width="300"><br></td>
+
 ## Overview
 
 Not all features listed here are available in the demo. 
