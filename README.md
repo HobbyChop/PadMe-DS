@@ -1,6 +1,6 @@
 # PadMe-DS Project Documentation
 
-<align="center"><img src="PadMe-DS.png" width="300"><br>
+<img src="PadMe-DS.png" width="300">
 
 ## Overview
 
