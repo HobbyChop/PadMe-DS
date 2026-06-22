@@ -27,9 +27,9 @@ the **mDS slot-2 MIDI cart**.
 ## Features
 
 ### Sound engine
-- Layered two-operator FM voice with an envelope you draw by hand on screen
-  (attack, decay, sustain, release).
-- Independent FM feedback for the chord, splatter, and bass, each on its own fader.
+- Layered two-operator FM voice with a hand-drawn ADSR envelope — a full,
+  independent one for the chord, splatter, and bass each.
+- Independent FM feedback and a low-pass **tone** for the chord, splatter, and bass.
 - Glide / portamento, overlapping chord tails, and a held-chord auto-modulation
   that slowly brings a sustained chord to life.
 - 8-voice polyphony with smart voice stealing so chords and effects layer cleanly.
@@ -65,8 +65,8 @@ the **mDS slot-2 MIDI cart**.
   want.
 - **In:** set a MIDI **IN** channel and a DAW or keyboard can drive PadMe back —
   incoming notes trigger the chord pads (see the map below) and incoming CC moves the
-  matching parameter. Point IN at a different channel than the OUT channels to avoid
-  feedback loops.
+  matching parameter. Defaults: **IN on ch 1**, **OUT on ch 2 / 3 / 4** (chord /
+  splatter / bass), so in and out never share a channel and can't feed back.
 - **Every parameter is a MIDI CC, both ways.** Move any fader, XY pad, envelope
   handle, toggle, or settings value and it streams out as a Continuous Controller;
   the same CC coming in drives that control — so a whole performance records and
@@ -106,7 +106,10 @@ in the current bank and key, and note-off releases it unless HOLD is latched.
 - **Chord pads** ring the centre panel. Tap to play; drag between pads to retrigger.
 - **Three XY pads** across the top morph the chord, splatter, and bass timbres
   (X = FM ratio, Y = FM depth).
-- **ADSR plot** sits below the XY pads. Drag the three handles to draw the envelope.
+- **Envelope box** sits below the XY pads and edits a full ADSR for each of the
+  three sources. Pick which with the colour-coded **C / S / B tabs** (top-right);
+  drag the active envelope's three handles. The other two show as faint reference
+  curves so they can't be grabbed by accident.
 - **Feedback faders** (right of the ADSR) set the FM self-feedback for chord,
   splatter, and bass.
 - **Function row:** a 3-fader **volume mixer**, a **MOD / RATE** control, a
@@ -116,7 +119,9 @@ in the current bank and key, and note-off releases it unless HOLD is latched.
 ### Settings menu (`SELECT`)
 A scrolling, grouped menu (use the d-pad: up/down to pick, left/right to adjust;
 hold to auto-repeat). Sections: CHORD, MODULATION, SPLATTER, BASS, CLOCK / VISUAL,
-and MIDI. The chord pads stay live underneath so you can hear changes.
+TONE / FX, and MIDI. Each of CHORD / SPLATTER / BASS carries its own **TONE**
+(low-pass) control in its section. The chord pads stay live underneath so you can
+hear changes.
 
 ### Presets screen (`Y`)  *(full version only)*
 A grid of 32 slots. **Tap** a slot to load its patch; **hold** a slot to save the
@@ -126,8 +131,10 @@ current full setup into it. Filled slots are highlighted.
 
 ## MIDI CC reference  *(full version only)*
 
-All CC messages are sent on the chord MIDI channel (the control channel). Values
-are 0 to 127 unless noted.
+Every CC is **two-way**: PadMe sends it when you move that control, and receiving
+it (on the MIDI IN channel) moves the control. CC is sent on the chord/control
+channel; the **CC OUT** setting can silence the outgoing CC stream. Values are
+0 to 127 unless noted.
 
 | CC | Parameter | | CC | Parameter |
 |---:|---|---|---:|---|
@@ -153,7 +160,9 @@ are 0 to 127 unless noted.
 | 21 | Mod amount | | 109 | RAND (0 off / 127 on) |
 | 22 | Mod rate | | 106 | Chord hold (0 / 127) |
 | 23 | Mod sync | | 107 | Splatter hold (0 / 127) |
-| | | | 108 | Bass hold (0 / 127) |
+| 110 | Chord stereo width | | 108 | Bass hold (0 / 127) |
+| 111 | Chord tone | | 113 | Splatter tone |
+| 112 | XY reveal (0 / 127) | | 114 | Bass tone |
 
 ---
 
@@ -163,7 +172,7 @@ The free demo is a limited build. Compared with the full version, the demo:
 
 - Is locked to a single chord bank (no bank switching).
 - Is locked to a single bass pattern.
-- Sends and recieves no MIDI, no CC, and no clock.
+- Sends and receives no MIDI, no CC, and no clock.
 - Has no presets and no save-state (no recall, no auto-restore).
 
 Everything else, the full FM engine, the XY morph pads, the splatter and bass
